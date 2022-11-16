@@ -12,7 +12,7 @@ const InfoCards = () => {
             name: 'Opening hours',
             description: 'Open 9.00am to 5.00pm everyday',
             icon: clock,
-            bgClass: 'bg-gradient-to-r from-secondary to-primary'
+            bgClass: 'bg-gradient-to-r from-primary to-secondary'
         },
         {
             id: 2,
