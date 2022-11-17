@@ -13,6 +13,7 @@ const AppointmentOptions = ({ appointment, setTreatment }) => {
                         onClick={() => setTreatment(appointment)}
                         htmlFor="booking-modal"
                         className="btn bg-gradient-to-r from-secondary to-primary text-white border-none cursor-pointer font-semibold"
+                        disabled={slots.length === 0}
                     >
                         Book Appointment
                     </label>
