@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AppointmentOptions = ({ appointment }) => {
+const AppointmentOptions = ({ appointment, setTreatment }) => {
     const { name, slots } = appointment;
     return (
         <div className="card  shadow-lg">
@@ -9,7 +9,13 @@ const AppointmentOptions = ({ appointment }) => {
                 <p className=' text-neutral font-[poppins] mb-2'>{slots.length > 0 ? slots[0] : 'Try Another Day!'}</p>
                 <p className='font-[poppins] text-neutral mb-3'>{slots.length} {slots.length > 1 ? 'spaces' : 'space'} available</p>
                 <div className="card-actions justify-center">
-                    <button className="btn bg-gradient-to-r from-secondary to-primary text-white border-none cursor-pointer font-semibold">Book Appointment</button>
+                    <label
+                        onClick={() => setTreatment(appointment)}
+                        htmlFor="booking-modal"
+                        className="btn bg-gradient-to-r from-secondary to-primary text-white border-none cursor-pointer font-semibold"
+                    >
+                        Book Appointment
+                    </label>
                 </div>
             </div>
         </div>
