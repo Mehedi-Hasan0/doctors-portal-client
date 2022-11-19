@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import menu from '../../../assets/icons/menu.svg';
 import close from '../../../assets/icons/close.svg';
 import './Navbar.css';
+import { AuthContext } from '../../../context/AuthProvider';
 
 const Navbar = () => {
+    const { user, logout } = useContext(AuthContext);
     const [toggle, setToggle] = useState(false);
+
+    const handleLogout = () => {
+        logout()
+            .then(() => { })
+            .catch(err => console.log(err))
+    }
 
     return (
         <div className=' max-w-7xl mx-auto'>
@@ -19,8 +27,13 @@ const Navbar = () => {
                     <Link to="/contactUS">Contact Us</Link>
                 </div>
                 <div>
-                    <Link to="/login"><button className=' btn btn-md btn-info btn-outline font-[poppins] mr-5'>Login</button></Link>
-                    <Link to="/signUp"><button className='btn btn-md btn-info font-[poppins] text-white'>Sign Up</button></Link>
+                    {
+                        user?.email ?
+                            <Link to="/login"><button onClick={handleLogout} className=' btn btn-md btn-info btn-outline font-[poppins] mr-5'>Sign out</button></Link>
+                            :
+
+                            <Link to="/login"><button className='btn btn-md btn-info font-[poppins] text-white'>Login</button></Link>
+                    }
                 </div>
             </div>
             <div className=' flex items-center justify-between lg:hidden p-5'>
