@@ -1,22 +1,34 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm()
-
-    const { createUser } = useContext(AuthContext)
+    const { createUser, updateUser } = useContext(AuthContext);
+    const [signUpError, setSignUpError] = useState('');
 
     const handleSignup = (data) => {
         console.log(data);
+        setSignUpError('');
 
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast.success('User Created Successfully.')
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => { })
+                    .catch(err => console.log(err))
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err);
+                setSignUpError(err.message)
+            })
     }
 
     return (
@@ -51,6 +63,7 @@ const SignUp = () => {
                             type="password"
                             className='input input-bordered' />
                         {errors.password && <p className=' text-red-400 text-xs my-2'>{errors.password?.message}</p>}
+                        {signUpError && <p className=' text-red-400 text-xs my-2'>{signUpError.slice(22, -2)}</p>}
                     </div>
                     <input type='submit' className='btn btn-neutral w-full mt-4' value='sign up' />
                 </form>
