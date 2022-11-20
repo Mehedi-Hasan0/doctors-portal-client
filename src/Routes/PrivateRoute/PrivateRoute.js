@@ -8,7 +8,6 @@ const PrivateRoute = ({ children }) => {
 
     if (loading) {
         return <progress className="progress w-[50vw] absolute left-[25vw] top-[50%] right-[25vw]"></progress>
-
     }
 
     if (user) {
