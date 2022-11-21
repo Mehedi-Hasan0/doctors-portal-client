@@ -38,8 +38,11 @@ const Navbar = () => {
                     }
                 </div>
             </div>
-            <div className=' flex items-center justify-between lg:hidden p-5'>
-                <p className=' font-[poppins] font-medium text-lg text-black'>Doctors Portal</p>
+            <div className=' flex items-center justify-between lg:hidden p-5' >
+                <label htmlFor="dashboard-drawer">
+                    <img src={menu} className=" w-5 h-5 object-contain mr-2" alt="" />
+                </label>
+                <p className=' font-[poppins] font-medium text-base text-black'>Doctors Portal</p>
                 <div>
                     <img src={toggle ? close : menu} className=" w-6 h-6 object-contain" alt="" onClick={() => setToggle((previous) => !previous)} />
 

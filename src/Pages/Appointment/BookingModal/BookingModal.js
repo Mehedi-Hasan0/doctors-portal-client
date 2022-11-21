@@ -36,9 +36,13 @@ const BookingModal = ({ treatment, setTreatment, selectDate, refetch }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setTreatment(null);
-                toast.success('Booking confirmed!');
-                refetch();
+                if (data.acknowledged) {
+                    setTreatment(null);
+                    toast.success('Booking confirmed!');
+                    refetch();
+                } else {
+                    toast.error(data.message);
+                }
             })
     }
 
