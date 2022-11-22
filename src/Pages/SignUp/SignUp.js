@@ -28,9 +28,9 @@ const SignUp = () => {
                     })
                     .catch(err => console.log(err))
             })
-            .catch(err => {
-                console.log(err);
-                setSignUpError(err.message)
+            .catch(error => {
+                console.log(error);
+                setSignUpError(error.message)
             })
     }
 
@@ -43,10 +43,21 @@ const SignUp = () => {
             },
             body: JSON.stringify(user)
         })
-            .the(res => res.json())
+            .then(res => res.json())
             .then(data => {
-                console.log('saveUser', data);
-                navigate('/');
+                getUserToken(email);
+            })
+    }
+
+    const getUserToken = (email) => {
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.accessToken) {
+                    localStorage.setItem('accessToken', data.accessToken)
+                    navigate('/');
+                }
             })
     }
 
