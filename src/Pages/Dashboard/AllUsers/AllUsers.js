@@ -31,7 +31,7 @@ const AllUsers = () => {
 
     return (
         <div className=' bg-[#F1F5F9] font-[poppins]'>
-            <div className=' p-14'>
+            <div className=' md:p-14 p-3'>
                 <h2 className=' text-3xl'>Users</h2>
                 <div className="overflow-x-auto">
                     <table className="table w-full">

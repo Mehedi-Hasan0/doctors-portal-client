@@ -23,7 +23,7 @@ const MyAppointment = () => {
 
     return (
         <div className=' bg-[#F1F5F9] font-[poppins] h-[100vh]'>
-            <div className=' p-14'>
+            <div className=' md:p-14 p-3 w-full'>
                 <h3 className=' text-2xl text-neutral mb-6'>My appointment</h3>
                 <div className="overflow-x-auto">
                     <table className="table w-full">
