@@ -31,12 +31,12 @@ const AllUsers = () => {
 
     return (
         <div className=' bg-[#F1F5F9] font-[poppins]'>
-            <div className=' md:p-14 p-3'>
-                <h2 className=' text-3xl'>Users</h2>
+            <div className=' md:py-14 md:px-6 p-3'>
+                <h2 className=' text-3xl mb-7'>Users</h2>
                 <div className="overflow-x-auto">
                     <table className="table w-full">
                         <thead>
-                            <tr>
+                            <tr className=' text-center'>
                                 <th></th>
                                 <th>Name</th>
                                 <th>Email</th>
@@ -47,12 +47,12 @@ const AllUsers = () => {
                         <tbody>
                             {
                                 users.map((user, i) =>
-                                    <tr key={user._id}>
+                                    <tr key={user._id} className='hover text-center'>
                                         <th>{i + 1}</th>
                                         <td>{user.name}</td>
                                         <td>{user.email}</td>
-                                        <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className=' btn btn-xs btn-primary text-neutral'>Make Admin</button>}</td>
-                                        <td><button className=' btn btn-xs'>Delete</button></td>
+                                        <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className=' btn'>Make Admin</button>}</td>
+                                        <td><button className=' btn'>Delete</button></td>
                                     </tr>
                                 )
                             }

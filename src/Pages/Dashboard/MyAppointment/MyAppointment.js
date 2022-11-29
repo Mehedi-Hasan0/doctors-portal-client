@@ -23,8 +23,8 @@ const MyAppointment = () => {
 
     return (
         <div className=' bg-[#F1F5F9] font-[poppins] h-[100vh]'>
-            <div className=' md:p-14 p-3 w-full'>
-                <h3 className=' text-2xl text-neutral mb-6'>My appointment</h3>
+            <div className=' md:py-14 md:px-7 p-3 w-full'>
+                <h3 className=' text-2xl text-neutral mb-7'>My appointment</h3>
                 <div className="overflow-x-auto">
                     <table className="table w-full">
                         <thead>
@@ -38,7 +38,8 @@ const MyAppointment = () => {
                         </thead>
                         <tbody>
                             {
-                                bookings.map((booking, i) =>
+                                bookings &&
+                                bookings?.map((booking, i) =>
                                     <tr key={booking._id} className=' hover text-center'>
                                         <th>{i + 1}</th>
                                         <td>{booking.patient}</td>

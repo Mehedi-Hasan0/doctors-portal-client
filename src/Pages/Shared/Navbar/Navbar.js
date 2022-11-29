@@ -8,7 +8,7 @@ import useAdmin from '../../../hook/useAdmin';
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
-    const [isAdmin] = useAdmin(user.email);
+    const [isAdmin] = useAdmin(user?.email);
     const [toggle, setToggle] = useState(false);
 
     const handleLogout = () => {
@@ -64,7 +64,6 @@ const Navbar = () => {
                                     }
                                 </ul>
                             </div>
-                            <Link to="/reviews">Reviews</Link>
                             <Link to="/contactUS">Contact Us</Link>
                         </div>
                     </div>
